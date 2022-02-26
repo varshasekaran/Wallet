@@ -7,10 +7,10 @@ public enum Currency {
     private final double factor;
 
     Currency(double factor) {
-        this.factor=factor;
+        this.factor = factor;
     }
 
-    public double getConversionFactor(){
+    public double getConversionFactor() {
         return this.factor;
     }
 }
