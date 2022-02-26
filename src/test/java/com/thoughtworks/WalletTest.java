@@ -9,7 +9,7 @@ import static org.hamcrest.Matchers.is;
 public class WalletTest {
 
     @Test
-    void shouldAddMoneyToBalanceWhenDeposited() {
+    void shouldAddMoneyToWalletWhenDeposited() {
         Wallet wallet = new Wallet(100, Currency.RUPEE);
 
         double money = 10;
@@ -19,14 +19,24 @@ public class WalletTest {
     }
 
     @Test
-    void shouldWithdrawMoneyWhenRequested() {
-        Wallet wallet = new Wallet(100, Currency.RUPEE);
+    void shouldWithdrawMoneyFromWalletWhenRequested() {
+        Wallet wallet = new Wallet(1, Currency.RUPEE);
 
-        double amountToWithdraw = 500;
-        wallet.addMoney(10, Currency.USD);
+        double amountToWithdraw = 10;
+        wallet.addMoney(1, Currency.USD);
         wallet.withdrawMoney(amountToWithdraw, Currency.RUPEE);
 
         assertThat(wallet.checkIfWithdrawn(Currency.RUPEE), is(equalTo(amountToWithdraw)));
+    }
+
+    @Test
+    void shouldAbleToCheckBalanceInWalletWhenNeeded() {
+        Wallet wallet = new Wallet(500, Currency.RUPEE);
+
+        wallet.addMoney(1, Currency.USD);
+        wallet.withdrawMoney(10, Currency.USD);
+
+        assertThat(wallet.checkBalance(Currency.RUPEE), is(true));
     }
 
 }

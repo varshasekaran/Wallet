@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.thoughtworks.WalletTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-02-26T07:57:58" hostname="Varshas-MBP" time="0.022">
+<testsuite name="com.thoughtworks.WalletTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-02-26T09:11:18" hostname="Varshas-MBP" time="0.025">
   <properties/>
-  <testcase name="shouldAddMoneyToBalanceWhenDeposited()" classname="com.thoughtworks.WalletTest" time="0.021"/>
-  <testcase name="shouldWithdrawMoneyWhenRequested()" classname="com.thoughtworks.WalletTest" time="0.0"/>
+  <testcase name="shouldWithdrawMoneyFromWalletWhenRequested()" classname="com.thoughtworks.WalletTest" time="0.023"/>
+  <testcase name="shouldAddMoneyToWalletWhenDeposited()" classname="com.thoughtworks.WalletTest" time="0.001"/>
+  <testcase name="shouldAbleToCheckBalanceInWalletWhenNeeded()" classname="com.thoughtworks.WalletTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

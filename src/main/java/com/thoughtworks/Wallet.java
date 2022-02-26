@@ -24,10 +24,21 @@ public class Wallet {
     }
 
     public double checkIfAdded(Currency currency) {
+        if(this.currency==currency)
+            return currentBalance-previousBalance;
         return (currentBalance - previousBalance) / currency.getConversionFactor();
     }
 
     public double checkIfWithdrawn(Currency currency) {
         return (previousBalance - currentBalance) / currency.getConversionFactor();
     }
+
+    public boolean checkBalance(Currency currency) {
+        return calculateBalance(currency) == (currentBalance * currency.getConversionFactor());
+    }
+
+    private double calculateBalance(Currency currency) {
+        return currentBalance *= currency.getConversionFactor();
+    }
 }
+
