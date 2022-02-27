@@ -13,48 +13,50 @@ public class WalletTest {
 
     @Test
     void shouldAddMoneyToWalletWhenDeposited() throws InvalidAmountException {
-        Wallet wallet = new Wallet(100, Currency.RUPEE);
-        double money = 10;
+        Wallet wallet = new Wallet();
+        double expectedBalance = 748.5;
 
-        wallet.addMoney(money, Currency.USD);
+        wallet.addMoney(10, Currency.USD);
+        double actualBalance = wallet.calculateBalance(Currency.RUPEE);
 
-        assertThat(wallet.checkIfAdded(Currency.USD), is(equalTo(money)));
+        assertThat(actualBalance, is(equalTo(expectedBalance)));
     }
 
     @Test
     void shouldNotBeAbleToAddMoneyWhenAmountHasNegativeValue() {
-        Wallet wallet = new Wallet(1, Currency.RUPEE);
+        Wallet wallet = new Wallet();
 
         assertThrows(InvalidAmountException.class, () -> wallet.addMoney(-10,Currency.USD));
     }
 
     @Test
     void shouldWithdrawMoneyFromWalletWhenRequested() throws InsufficientBalanceException, InvalidAmountException {
-        Wallet wallet = new Wallet(1, Currency.RUPEE);
-        double amountToWithdraw = 10;
+        Wallet wallet = new Wallet();
+        double expectedBalance = 64.85;
 
         wallet.addMoney(1, Currency.USD);
-        wallet.withdrawMoney(amountToWithdraw, Currency.RUPEE);
+        wallet.withdrawMoney(10, Currency.RUPEE);
+        double actualBalance = wallet.calculateBalance(Currency.RUPEE);
 
-        assertThat(wallet.checkIfWithdrawn(Currency.RUPEE), is(equalTo(amountToWithdraw)));
+        assertThat(actualBalance, is(equalTo(expectedBalance)));
     }
 
     @Test
-    void shouldNotBeAbleToWithdrawMoneyWhenAmountMoreThanAvailableBalance() {
-        Wallet wallet = new Wallet(1, Currency.RUPEE);
+    void shouldNotBeAbleToWithdrawMoneyWhenAmountIsMoreThanAvailableBalance() {
+        Wallet wallet = new Wallet();
 
         assertThrows(InsufficientBalanceException.class, () -> wallet.withdrawMoney(1, Currency.USD));
     }
 
     @Test
     void shouldAbleToCheckBalanceInWalletWhenNeeded() throws InsufficientBalanceException, InvalidAmountException {
-        Wallet wallet = new Wallet(1, Currency.RUPEE);
+        Wallet wallet = new Wallet();
         double expectedBalance = 1;
 
-        wallet.addMoney(1, Currency.USD);
+        wallet.addMoney(2, Currency.USD);
         wallet.withdrawMoney(1, Currency.USD);
 
-        assertThat(wallet.calculateBalance(Currency.RUPEE), is(expectedBalance));
+        assertThat(wallet.calculateBalance(Currency.USD), is(expectedBalance));
     }
 
 }

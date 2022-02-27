@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.thoughtworks.WalletTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-02-27T14:20:04" hostname="Varshas-MBP" time="0.036">
+<testsuite name="com.thoughtworks.WalletTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-02-27T15:58:09" hostname="Varshas-MBP" time="0.029">
   <properties/>
-  <testcase name="shouldWithdrawMoneyFromWalletWhenRequested()" classname="com.thoughtworks.WalletTest" time="0.024"/>
-  <testcase name="shouldNotBeAbleToWithdrawMoneyWhenAmountMoreThanAvailableBalance()" classname="com.thoughtworks.WalletTest" time="0.003"/>
-  <testcase name="shouldAddMoneyToWalletWhenDeposited()" classname="com.thoughtworks.WalletTest" time="0.001"/>
+  <testcase name="shouldWithdrawMoneyFromWalletWhenRequested()" classname="com.thoughtworks.WalletTest" time="0.02"/>
+  <testcase name="shouldNotBeAbleToWithdrawMoneyWhenAmountIsMoreThanAvailableBalance()" classname="com.thoughtworks.WalletTest" time="0.003"/>
+  <testcase name="shouldAddMoneyToWalletWhenDeposited()" classname="com.thoughtworks.WalletTest" time="0.0"/>
   <testcase name="shouldAbleToCheckBalanceInWalletWhenNeeded()" classname="com.thoughtworks.WalletTest" time="0.001"/>
-  <testcase name="shouldNotBeAbleToAddMoneyWhenAmountHasNegativeValue()" classname="com.thoughtworks.WalletTest" time="0.003"/>
+  <testcase name="shouldNotBeAbleToAddMoneyWhenAmountHasNegativeValue()" classname="com.thoughtworks.WalletTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
