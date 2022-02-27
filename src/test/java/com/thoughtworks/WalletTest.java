@@ -1,6 +1,7 @@
 package com.thoughtworks;
 
 import Exceptions.InsufficientBalanceException;
+import Exceptions.InvalidAmountException;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -11,17 +12,24 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class WalletTest {
 
     @Test
-    void shouldAddMoneyToWalletWhenDeposited() {
+    void shouldAddMoneyToWalletWhenDeposited() throws InvalidAmountException {
         Wallet wallet = new Wallet(100, Currency.RUPEE);
-
         double money = 10;
+
         wallet.addMoney(money, Currency.USD);
 
         assertThat(wallet.checkIfAdded(Currency.USD), is(equalTo(money)));
     }
 
     @Test
-    void shouldWithdrawMoneyFromWalletWhenRequested() throws InsufficientBalanceException {
+    void shouldNotBeAbleToAddMoneyWhenAmountHasNegativeValue() {
+        Wallet wallet = new Wallet(1, Currency.RUPEE);
+
+        assertThrows(InvalidAmountException.class, () -> wallet.addMoney(-10,Currency.USD));
+    }
+
+    @Test
+    void shouldWithdrawMoneyFromWalletWhenRequested() throws InsufficientBalanceException, InvalidAmountException {
         Wallet wallet = new Wallet(1, Currency.RUPEE);
         double amountToWithdraw = 10;
 
@@ -39,7 +47,7 @@ public class WalletTest {
     }
 
     @Test
-    void shouldAbleToCheckBalanceInWalletWhenNeeded() throws InsufficientBalanceException {
+    void shouldAbleToCheckBalanceInWalletWhenNeeded() throws InsufficientBalanceException, InvalidAmountException {
         Wallet wallet = new Wallet(1, Currency.RUPEE);
         double expectedBalance = 1;
 

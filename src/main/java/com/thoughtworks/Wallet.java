@@ -1,6 +1,7 @@
 package com.thoughtworks;
 
 import Exceptions.InsufficientBalanceException;
+import Exceptions.InvalidAmountException;
 
 public class Wallet {
     private Currency currency;
@@ -21,7 +22,10 @@ public class Wallet {
         }
     }
 
-    public void addMoney(double money, Currency currency) {
+    public void addMoney(double money, Currency currency) throws InvalidAmountException {
+        if(money<0){
+            throw new InvalidAmountException("");
+        }
         previousBalance = currentBalance;
         currentBalance += money * currency.getConversionFactor();
     }
