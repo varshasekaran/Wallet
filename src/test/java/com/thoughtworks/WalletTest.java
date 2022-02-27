@@ -32,6 +32,13 @@ public class WalletTest {
     }
 
     @Test
+    void shouldNotBeAbleToWithdrawMoneyWhenAmountMoreThanAvailableBalance() {
+        Wallet wallet = new Wallet(1, Currency.RUPEE);
+
+        assertThrows(InsufficientBalanceException.class, () -> wallet.withdrawMoney(1, Currency.USD));
+    }
+
+    @Test
     void shouldAbleToCheckBalanceInWalletWhenNeeded() throws InsufficientBalanceException {
         Wallet wallet = new Wallet(1, Currency.RUPEE);
         double expectedBalance = 1;
